@@ -4,10 +4,78 @@
     text-decoration: none;
     list-style: none;
 }
+header{
+	background-color:#c8c8c8;
+}
 .navbar{
     display: flex;
     justify-content: space-between;
+	align-items: center;
     width: 100%;
     height: 100px;
-    background-color: red;
+	background-color: #181818;
+	position:fixed;
+	top:0;
+}
+.logo img{
+	/* width: 60px; */ 
+	width: 80px;
+	border-radius: 50%;
+}
+.fav-con{
+	display: flex;
+	gap:20px;
+}
+.fav-con a{
+	text-decoration: none;
+	color: white;
+}
+#input-busqueda{
+	outline: none;
+	height:30px;
+	width: 400px;
+	border-radius: 10px;
+	border: 1px solid #39c;
+}
+.submit-busqueda{
+	border:0;
+	border-radius: 10px;
+	height: 30px;
+	width: 60px;
+	background-color: #75a83e;
+	color:white;
+	font-size: 15px;
+}
+.presentacion{
+	margin-top:100px;
+	height:500px;
+	background-color: #252525;
+	display:flex;
+	
+}
+.seccionuno{
+	width:40%;
+	padding:50px;
+}
+.secciondos{
+	width:60%;
+}
+.seccionuno p{
+	color:white;
+}
+.seccionuno a{
+	color:#d3ffc9;
+	text-decoration:none;
+}
+.seccionuno a:hover{
+	text-decoration:underline;
+}
+.imagenfondo{
+	background-image:url("../images/fondoDifuminado.webp");
+	background-size: cover;
+	background-position-x: left;
+}
+h1{
+	color:white;
+	font-size:50px;
 }

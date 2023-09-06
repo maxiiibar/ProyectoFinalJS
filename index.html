@@ -11,30 +11,45 @@
       crossorigin="anonymous"
     />
     <!-- Estilos Propios -->
-    <link rel="stylesheet" href="/css/syles.css" />
+    <link rel="stylesheet" href="./css/syles.css" />
     <title>Rick and Morty</title>
   </head>
   <body>
     <header>
         <nav class="navbar">
             <div class="container">
-                <div class="logo"><img src="./images/logo.webp" alt="Logo" /></div>
+                <a href="" class="logo"><img src="./images/logo.webp" alt="Logo" /></a>
                 <div>
                 <form>
                     <label for="input-busqueda">
                     <input type="text" placeholder="Buscar" id="input-busqueda" />
                     </label>
                     <label>
-                    <input type="submit" value="Buscar" />
+                    <input type="submit" value="Buscar" class="submit-busqueda"/>
                     </label>
                 </form>
                 </div>
-                <ul>
-                <li><a href="">Favoritos</a></li>
-                <li><a href="">Contacto</a></li>
-                </ul>
+                <div class="fav-con" >
+					<a href="">Favoritos</a>
+					<a href="">Contacto</a>
+                </div>
             </div>
         </nav>
+		<div class="presentacion">
+			<div class="seccionuno">
+				<h1>MI WEB DE RICK AND MORTY</h1>
+				<p>
+				Mi nombre es Máximo Bär, y este es mi proyecto final del curso de JavaScript de CODERHOUSE.
+				</p>
+				<p>
+					Mi propuesta final es una página interactiva basada en la api <a href="https://rickandmortyapi.com/">"Rick and Morty API"</a>
+				</p>
+			</div>
+			<div class="imagenfondo secciondos"></div>
+		</div>
     </header>
+	<main>
+		
+	</main>
   </body>
 </html>
