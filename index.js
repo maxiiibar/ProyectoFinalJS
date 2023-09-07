@@ -63,11 +63,9 @@ const cardsLocaciones = data => {
 const cardsAHtml = (data, funcion, contenedor) => {
     contenedor.innerHTML = funcion(data)
 }
-/* cardsAHtml(data, cardsPersonajes, personajes) */
 
 const agregarAFav = (clase, fav) => {
     const cards = document.querySelectorAll(clase)
-    console.log(cards)
     for  ( let i = 0; i < cards.length; i++ ){
         cards[i].onclick = (e) => {
             const id = e.currentTarget.id.slice(4)
@@ -77,8 +75,8 @@ const agregarAFav = (clase, fav) => {
                 Toastify({
                     text: "Añadido a favoritos",
                     duration: 3000,
-                    destination: "https://github.com/apvarun/toastify-js",
-                    newWindow: true,
+                    destination: "favoritos.html",
+                    newWindow: false,
                     close: true,
                     gravity: "bottom", // `top` or `bottom`
                     position: "right", // `left`, `center` or `right`
@@ -98,8 +96,8 @@ const agregarAFav = (clase, fav) => {
                     Toastify({
                         text: "Añadido a favoritos",
                         duration: 3000,
-                        destination: "https://github.com/apvarun/toastify-js",
-                        newWindow: true,
+                        destination: "favoritos.html",
+                        newWindow: false,
                         close: true,
                         gravity: "bottom", // `top` or `bottom`
                         position: "right", // `left`, `center` or `right`
@@ -114,8 +112,8 @@ const agregarAFav = (clase, fav) => {
                     Toastify({
                         text: "Ya se encuentra en favoritos",
                         duration: 3000,
-                        destination: "https://github.com/apvarun/toastify-js",
-                        newWindow: true,
+                        destination: "favoritos.html",
+                        newWindow: false,
                         close: true,
                         gravity: "bottom", // `top` or `bottom`
                         position: "right", // `left`, `center` or `right`
@@ -123,7 +121,6 @@ const agregarAFav = (clase, fav) => {
                         style: {
                           background: "linear-gradient(90deg, rgba(255,76,76,1) 41%, rgba(255,187,91,1) 100%)",
                         },
-                        onClick: function(){} // Callback after click
                       }).showToast();
                 }
             }

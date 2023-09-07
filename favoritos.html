@@ -38,22 +38,20 @@
           <a href="contacto.html">Contacto</a>
         </div>
       </nav>
-      <div class="presentacion">
-        <div class="seccionuno">
-          <h1>MI WEB DE RICK AND MORTY</h1>
-          <p>
-            Mi nombre es Máximo Bär, y este es mi proyecto final del curso de
-            JavaScript de CODERHOUSE.
-          </p>
-          <p>
-            Mi propuesta final es una página interactiva basada en la api
-            <a href="https://rickandmortyapi.com/">"Rick and Morty API"</a>
-          </p>
-        </div>
-        <div class="imagenfondo secciondos"></div>
-      </div>
     </header>
-    <main>
+    <main class="main-favoritos">
+		<section class="container seccion">
+			<h2>PERSONAJES FAVORITOS</h2>
+			<div class="personajes-favoritos"></div>
+		</section>
+		<section class="container seccion">
+			<h2>EPISODIOS FAVORITOS</h2>
+			<div class="episodios-favoritos"></div>
+		</section>
+		<section class="container seccion">
+			<h2>LOCACIONES FAVORITAS</h2>
+			<div class="locaciones-favoritas"></div>
+		</section>
     </main>
     <footer>
       <div class="container footer">
@@ -63,5 +61,6 @@
         </p>
       </div>
     </footer>
+	<script src="favoritos.js"></script>
   </body>
 </html>
