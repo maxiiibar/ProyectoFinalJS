@@ -100,6 +100,7 @@ footer{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding-bottom: 50px;
 }
 .seccion{
 	margin: 20px 0;
@@ -114,7 +115,10 @@ footer{
 	font-weight: 700;
 	width: 125px;
 	height: 50px;
-	margin-bottom: 0;
+	margin-bottom: 50px;
+}
+.vermas:hover{
+	color: rgb(195, 195, 195);
 }
 .seccion h2{
 	margin: 50px 0 70px 0;
@@ -168,12 +172,24 @@ footer{
 .boton-favorito:hover{
 	color: rgb(65, 184, 178);
 }
-.card-episodio{
+.card-episodio, .card-locacion{
 	background-color: white;
-	width: 400px;
+	width: 300px;
+	height: 150px;
 	padding: 10px;
 	text-align: left;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
+}
+.contenido-episodio, .contenido-locacion{
+	height: 115px;
+}
+.contenido-episodio h5, .contenido-locacion h5{
+	font-weight: 700;
+}
+.contenido-episodio p, .contenido-locacion p{
+	margin-bottom: 0;
 }
 .fav-episodio button {
-	position: absolute;
+	position: static;
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
 }
