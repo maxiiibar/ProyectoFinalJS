@@ -20,7 +20,7 @@ const cardPFav = (elements) => {
                     <p>Estado: ${element.status || "No disponible"}</p>
                 </div>
                 <div class="fav-personaje">
-                    <button class="boton-eliminar boton-personaje" id="fav-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
+                    <button class="boton-eliminar boton-personaje" id="del-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
                 </div>
             </div>
         `
@@ -38,7 +38,7 @@ const cardEFav = data => {
                     <p>Fecha de emisión: ${element.air_date || "No disponible"}</p>
                 </div>
                 <div class="fav-episodio">
-                    <button class="boton-eliminar boton-episodio" id="fav-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></button>
+                    <button class="boton-eliminar boton-episodio" id="del-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></button>
                 </div>
             </div>
         `
@@ -56,7 +56,7 @@ const cardLFav = data => {
                     <p>Dimensión: ${element.dimension || "No disponible"}</p>
                 </div>
                 <div class="fav-locacion">
-                    <button class="boton-eliminar boton-locacion" id="fav-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
+                    <button class="boton-eliminar boton-locacion" id="del-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
                 </div>
             </div>
         `
@@ -64,15 +64,29 @@ const cardLFav = data => {
     return LFav
 }
 
+const eliminarDeFav = (clase, fav) => {
+	const cards = document.querySelectorAll(clase)
+	for ( let i = 0; i < cards.length; i++){
+		cards[i].onclick = (e) => {
+			const id = e.currentTarget.id.slice(4)
+			console.log(id)
+            const memoria = JSON.parse(localStorage.getItem(fav))
+		}
+	}
+}
+
 const cardsAHtml = (data, funcion, contenedor) => {
     contenedor.innerHTML = funcion(data)
 }
-const crearCardsFav = (vector, tipo, funcion, contenedor) => {
+const crearCardsFav = (vector, tipo, funcion, contenedor, claseBoton, storage) => {
 	const ids = vector.reduce ((acc, element ) => {return acc + `${element}, `},"")
 	fetch (`https://rickandmortyapi.com/api/${tipo}/${ids}`)
 	.then ( res => res.json() )
-	.then ( data =>  cardsAHtml(data, funcion, contenedor) )
+	.then ( data =>  {
+		cardsAHtml(data, funcion, contenedor)
+		eliminarDeFav(claseBoton, storage)
+	})
 }
-crearCardsFav(arrayPFav,"character",cardPFav,personajesFavoritos)
-crearCardsFav(arrayEFav,"episode",cardEFav,episodiosFavoritos)
-crearCardsFav(arrayLFav,"location",cardLFav,locacionesFavoritas)
+crearCardsFav(arrayPFav,"character",cardPFav,personajesFavoritos,".boton-personaje","personajes-fav")
+crearCardsFav(arrayEFav,"episode",cardEFav,episodiosFavoritos,".boton-episodio","episodios-fav")
+crearCardsFav(arrayLFav,"location",cardLFav,locacionesFavoritas,".boton-locacion","locaciones-fav")
