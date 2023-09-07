@@ -127,7 +127,7 @@ footer{
 	color: #181818;
 	text-align: left;
 }
-.personajes, .locaciones, .episodios{
+.personajes, .locaciones, .episodios, .personajes-favoritos, .locaciones-favoritas, .episodios-favoritos{
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -169,8 +169,16 @@ footer{
 	background-color: rgb(0, 62, 66);
 	color: rgb(92, 255, 247);
 }
+.boton-eliminar {
+	border: 0;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: #900C3F;
+	color: #ffecf3;
+}
 .boton-favorito:hover{
-	color: rgb(65, 184, 178);
+	color: #ffa5c8);
 }
 .card-episodio, .card-locacion{
 	background-color: white;
@@ -194,5 +202,8 @@ footer{
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
 }
 .main-favoritos{
-	margin-top: 100px;
+	margin-top: 150px;
+}
+.main-favoritos section {
+	margin: 100px
 }

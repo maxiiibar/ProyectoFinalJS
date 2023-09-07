@@ -20,7 +20,7 @@ const cardPFav = (elements) => {
                     <p>Estado: ${element.status || "No disponible"}</p>
                 </div>
                 <div class="fav-personaje">
-                    <button class="boton-favorito boton-personaje" id="fav-${element.id}"><i class="fa-solid fa-star fa-lg"></i></button>
+                    <button class="boton-eliminar boton-personaje" id="fav-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
                 </div>
             </div>
         `
@@ -28,14 +28,51 @@ const cardPFav = (elements) => {
 	return PFav
 }
 
-const generarCardsFav = (vector, tipo, funcion, contenedor) => {
-	const nodos = []
-	vector.forEach( (elemento) => {
-		fetch (`https://rickandmortyapi.com/api/${tipo}/${elemento}`)
-		.then ( res => res.json() )
-		.then ( data => nodos.push(data) )
-	})
-	contenedor.innerHTML = funcion(nodos)
+const cardEFav = data => {
+    const Efav = data.reduce((acc, element) => {
+        return acc + `
+            <div class="card-episodio">
+                <div class="contenido-episodio">
+                    <h5>${ element.name || "Nombre no disponible"}</h5>
+                    <p>Episodio: ${element.episode || "No disponible"}</p>
+                    <p>Fecha de emisión: ${element.air_date || "No disponible"}</p>
+                </div>
+                <div class="fav-episodio">
+                    <button class="boton-eliminar boton-episodio" id="fav-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></button>
+                </div>
+            </div>
+        `
+    },"")
+    return Efav
 }
 
-generarCardsFav (arrayPFav, "character", cardPFav, personajesFavoritos)
+const cardLFav = data => {
+    const LFav = data.reduce((acc, element) => {
+        return acc + `
+            <div class="card-locacion">
+                <div class="contenido-locacion">
+                    <h5>${ element.name || "Nombre no disponible"}</h5>
+                    <p>Tipo: ${element.type || "No disponible"}<p>
+                    <p>Dimensión: ${element.dimension || "No disponible"}</p>
+                </div>
+                <div class="fav-locacion">
+                    <button class="boton-eliminar boton-locacion" id="fav-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
+                </div>
+            </div>
+        `
+    },"")
+    return LFav
+}
+
+const cardsAHtml = (data, funcion, contenedor) => {
+    contenedor.innerHTML = funcion(data)
+}
+const crearCardsFav = (vector, tipo, funcion, contenedor) => {
+	const ids = vector.reduce ((acc, element ) => {return acc + `${element}, `},"")
+	fetch (`https://rickandmortyapi.com/api/${tipo}/${ids}`)
+	.then ( res => res.json() )
+	.then ( data =>  cardsAHtml(data, funcion, contenedor) )
+}
+crearCardsFav(arrayPFav,"character",cardPFav,personajesFavoritos)
+crearCardsFav(arrayEFav,"episode",cardEFav,episodiosFavoritos)
+crearCardsFav(arrayLFav,"location",cardLFav,locacionesFavoritas)
