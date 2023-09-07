@@ -7,7 +7,7 @@ const arrayEFav = JSON.parse(localStorage.getItem("episodios-fav"))
 const arrayLFav = JSON.parse(localStorage.getItem("locaciones-fav"))
 
 const cardPFav = (elements) => {
-	conts PFav = elements.reduce (( acc, element) => {
+	const PFav = elements.reduce (( acc, element) => {
 		return acc + `
             <div class="card-personaje">
                 <div class="imagen-personaje">
