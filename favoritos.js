@@ -35,3 +35,5 @@ const generarCardsFav = (vector, tipo, funcion, contenedor) => {
 	})
 	contenedor.innerHTML = nodos
 }
+
+generarCardsFav (arrayPFav, "character", cardPFav, personajesFavoritos)
