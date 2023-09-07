@@ -13,3 +13,5 @@ const generarCardsFav = (vector, tipo) => {
 		.then ( data => console.log(data) )
 	})
 }
+
+generarCardsFav(arrayPFav,"character")
