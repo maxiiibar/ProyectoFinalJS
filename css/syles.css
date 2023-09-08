@@ -21,6 +21,7 @@ body{
 	top:0;
 	padding: 0 50px;
 }
+
 .logo img{
 	/* width: 60px; */ 
 	width: 80px;
@@ -127,7 +128,7 @@ footer{
 	color: #181818;
 	text-align: left;
 }
-.personajes, .locaciones, .episodios, .personajes-favoritos, .locaciones-favoritas, .episodios-favoritos{
+.personajes, .locaciones, .episodios, .personajes-favoritos, .locaciones-favoritas, .episodios-favoritos, .boxEpisodios, .boxLocaciones, .boxPersonajes{
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -214,4 +215,7 @@ footer{
 .vacio{
 	display: flex;
 	justify-content: center;
+}
+.nuevoHeight{
+	height:100px;
 }
