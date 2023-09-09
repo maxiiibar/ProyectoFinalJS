@@ -29,6 +29,7 @@ body{
 }
 .fav-con{
 	display: flex;
+	align-items: center;
 	gap:20px;
 }
 .fav-con a{
@@ -37,8 +38,9 @@ body{
 }
 #input-busqueda{
 	outline: none;
+	padding: 10px;
 	height:40px;
-	width: 600px;
+	width: 400px;
 	border-radius: 10px;
 	border: 1px solid #39c;
 }
@@ -148,8 +150,10 @@ footer{
 	font-weight: 700;
 	margin: 0;
 	padding: 5px;
+	text-align: center;
 }
 .card-personaje p{
+	text-align: center;
 	font-size: 12.5px;
 	margin: 0;
 }
@@ -196,6 +200,7 @@ footer{
 	font-weight: 700;
 }
 .contenido-episodio p, .contenido-locacion p{
+	font-size: 15px;
 	margin-bottom: 0;
 }
 .fav-episodio button {
@@ -203,7 +208,7 @@ footer{
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.20);
 }
 .main-favoritos{
-	margin-top: 50px;
+	margin-top: 100px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -218,4 +223,106 @@ footer{
 }
 .nuevoHeight{
 	height:100px;
+}
+.encontrados{
+	margin: 50px 0;
+}
+.encontrados h3{
+	font-size: 30px;
+	font-weight: 700;
+	margin-bottom: 50px;
+}
+.vacio p{
+	font-size: 25px;
+}
+.main-contacto{
+	margin-top:100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.contacto {
+	margin: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.contacto h2{
+	text-align: center;
+	margin: 50px 0;
+	font-size: 50px;
+	font-weight: 700;
+}
+.contacto div{
+	margin-bottom: 30px;
+}
+.formCon{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.footerContacto{
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 60px;
+}
+.info input{
+	border: none;
+	border-radius: 5px;
+	width: 500px;
+	height: 40px;
+	padding: 10px ;
+}
+.submit-form{
+	margin: 30px 0;
+	width: 100px;
+	height: 35px;
+	border: none;
+	background-color: #75a83e;
+	border-radius: 5px;
+	color: white;
+}
+#mensajeError{
+	text-align: center;
+	color: red;
+	margin-top: 20px;
+}
+#mensajeValido{
+	text-align: center;
+	color:#75a83e;
+	margin-top: 20px;
+}
+.hidden {
+	display: none;
+}
+
+.botonClaro{
+	border: none;
+	width: 110px;
+	height: 30px;
+	border-radius: 5px;
+	background-color: #75a83e;
+	color: white;
+}
+.botonOscuro{
+	background-color:#4a6b28;
+}
+.bodyOscuro{
+	background-color: #141714;
+}
+.navOscuro{
+	background-color: rgb(3, 9, 3);
+}
+.footerOscuro{
+	background-color: rgb(3, 9, 3);
+}
+.contenedorOscuro{
+	color: white;
+}
+.colorEnOscuro{
+	color: white;
+}
+.sectionEnOscuro{
+	color: white;
 }

@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -19,7 +21,7 @@
       <nav class="navbar">
         <a href="index.html" class="logo"><img src="./images/logo.webp" alt="Logo" /></a>
         <div>
-          <form>
+          <form id="barraDeBusqueda">
             <label for="input-busqueda">
               <input
                 type="search"
@@ -36,26 +38,55 @@
         <div class="fav-con">
           <a href="favoritos.html">Favoritos</a>
           <a href="contacto.html">Contacto</a>
+          <button id="modoBoton" class="botonClaro">Modo Oscuro</button>
         </div>
       </nav>
-      <div class="presentacion">
-        <div class="seccionuno">
-          <h1>MI WEB DE RICK AND MORTY</h1>
-          <p>
-            Mi nombre es Máximo Bär, y este es mi proyecto final del curso de
-            JavaScript de CODERHOUSE.
-          </p>
-          <p>
-            Mi propuesta final es una página interactiva basada en la api
-            <a href="https://rickandmortyapi.com/">"Rick and Morty API"</a>
-          </p>
-        </div>
-        <div class="imagenfondo secciondos"></div>
-      </div>
     </header>
-    <main>
+    <main class="main-contacto">
+      <section class="contacto container">
+        <h2>CONTACTO</h2>
+        <form class="formCon">
+          <div class="nombre">
+            <label class="info" for="input-nombre">
+              <input
+                type="text"
+                name="nombre"
+                placeholder="Nombre"
+                id="input-nombre"
+              />
+            </label>
+          </div>
+          <div class="apellido">
+            <label class="info" for="input-apellido">
+              <input
+                type="text"
+                name="apellido"
+                placeholder="Apellido"
+                id="input-apellido"
+              />
+            </label>
+          </div>
+          <div class="mail">
+            <label class="info" for="input-mail">
+              <input
+                type="text"
+                name="mail"
+                placeholder="Corre Electrónico"
+                id="input-mail"
+              />
+            </label>
+            <p class="hidden" id="mensajeError">Email invalido</p>
+            <p class="hidden" id="mensajeValido">Email valido</p>
+          </div>
+          <div class="submit">
+            <label>
+              <input type="submit" class="submit-form" value="Enviar"/>
+            </label>
+          </div>
+        </form>
+      </section>
     </main>
-    <footer>
+    <footer class="footerContacto">
       <div class="container footer">
         <p>
           Este sitio web fue hecho con mucho esfuerzo y cariño. Espero que lo
@@ -63,5 +94,10 @@
         </p>
       </div>
     </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/ef84cedd25.js" crossorigin="anonymous"></script>
+    <script src="funciones.js"></script>
+    <script src="contacto.js"></script>
   </body>
 </html>

@@ -11,15 +11,15 @@ barraBusqueda.addEventListener("submit",(event)=>{
 	presentacion.innerHTML = ""
 	mainIndex.innerHTML = `
 		<section class="encontrados container">
-			<h3>Personajes</h3>
+			<h3>PERSONAJES</h3>
 			<div class="boxPersonajes"></div>
 		</section>
 		<section class="encontrados container">
-			<h3>Episodios</h3>
+			<h3>EPISODIOS</h3>
 			<div class="boxEpisodios"></div>
 		</section>
-		<section class="encontradas container">
-			<h3>Locaciones</h3>
+		<section class="encontrados container">
+			<h3>LOCACIONES</h3>
 			<div class="boxLocaciones"></div>
 		</section>
 	`
@@ -37,19 +37,19 @@ barraBusqueda.addEventListener("submit",(event)=>{
 		if(data.error){
 			contenedorPersonajes.innerHTML = `
             <div class="vacio">
-                <h3>No se encontraron personajes con este nombre</h3>
+                <p>No se encontraron personajes con este nombre</p>
             </div>  
             `
 		}
 		else{
-			
 			if (data.results.length===1){
-				cardsAHtml(data.results[0], singlePCard, contenedorPersonajes)
+				cardsAHtml(data.results[0], singlePCard, contenedorPersonajes,"boton-favorito")
 			}
 			else{
-				cardsAHtml(data.results,cardsPersonajes,contenedorPersonajes)
+				cardsAHtml(data.results,cardsPersonajes,contenedorPersonajes,"boton-favorito")
 			}
 		}
+        agregarAFav(".boton-personaje","personajes-fav")
 	})
 	
 	fetch (`https://rickandmortyapi.com/api/episode/?name=${inputBusqueda.value.toLowerCase()}`)
@@ -58,18 +58,19 @@ barraBusqueda.addEventListener("submit",(event)=>{
 		if(data.error){
 			contenedorEpisodios.innerHTML = `
             <div class="vacio">
-                <h3>No se encontraron episodios con este nombre</h3>
+                <p>No se encontraron episodios con este nombre</p>
             </div>  
             `
 		}
 		else{
 			if (data.results.length===1){
-				cardsAHtml(data.results[0], singleECard, contenedorEpisodios)
+				cardsAHtml(data.results[0], singleECard, contenedorEpisodios,"boton-favorito")
 			}
 			else{
-				cardsAHtml(data.results,cardsEpisodios,contenedorEpisodios)
+				cardsAHtml(data.results,cardsEpisodios,contenedorEpisodios,"boton-favorito")
 			}
 		}
+        agregarAFav(".boton-episodio","episodios-fav")
 	})
 	
 	fetch (`https://rickandmortyapi.com/api/location/?name=${inputBusqueda.value.toLowerCase()}`)
@@ -78,24 +79,23 @@ barraBusqueda.addEventListener("submit",(event)=>{
 		if(data.error){
 			contenedorLocaciones.innerHTML = `
             <div class="vacio">
-                <h3>No se encontraron locaciones con este nombre</h3>
+                <p>No se encontraron locaciones con este nombre</p>
             </div>  
             `
 		}
 		else{
 			if (data.results.length===1){
-				cardsAHtml(data.results[0], singleLCard, contenedorLocaciones)
+				cardsAHtml(data.results[0], singleLCard, contenedorLocaciones,"boton-favorito")
 			}
 			else{
-				cardsAHtml(data.results,cardsLocaciones,contenedorLocaciones)
+				cardsAHtml(data.results,cardsLocaciones,contenedorLocaciones,"boton-favorito")
 			}
 		}
+        agregarAFav(".boton-locacion","locaciones-fav")
 	})
-
-
 })
 
-const cardsPersonajes = data => {
+/* const cardsPersonajes = data => {
     const card = data.reduce((acc, element) => {
         return acc + `
             <div class="card-personaje">
@@ -119,22 +119,22 @@ const cardsPersonajes = data => {
 
 const singlePCard = element => {
     const singleP = `
-    <div class="card-personaje">
-        <div class="imagen-personaje">
-            <img src="${element.image || "imagen-no-disponible.png"}">
+        <div class="card-personaje">
+            <div class="imagen-personaje">
+                <img src="${element.image || "imagen-no-disponible.png"}">
+            </div>
+            <div class="contenido-personaje">
+                <h5>${ element.name || "Nombre no disponible"}</h5>
+                <p>Especie: ${element.species || "No disponible"}</p>
+                <p>Genero: ${element.genre || "No disponible"}</p>
+                <p>Estado: ${element.status || "No disponible"}</p>
+            </div>
+            <div class="fav-personaje">
+                <button class="boton-favorito boton-personaje" id="fav-${element.id}"><i class="fa-solid fa-star fa-lg"></i></button>
+            </div>
         </div>
-        <div class="contenido-personaje">
-            <h5>${ element.name || "Nombre no disponible"}</h5>
-            <p>Especie: ${element.species || "No disponible"}</p>
-            <p>Genero: ${element.genre || "No disponible"}</p>
-            <p>Estado: ${element.status || "No disponible"}</p>
-        </div>
-        <div class="fav-personaje">
-            <button class="boton-eliminar boton-personaje" id="del-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
-        </div>
-    </div>
-`
-return singleP
+    `
+    return singleP
 }
 
 
@@ -158,18 +158,18 @@ const cardsEpisodios = data => {
 
 const singleECard = element => {
     const singleE = `
-    <div class="card-episodio">
-        <div class="contenido-episodio">
-            <h5>${ element.name || "Nombre no disponible"}</h5>
-            <p>Episodio: ${element.episode || "No disponible"}</p>
-            <p>Fecha de emisión: ${element.air_date || "No disponible"}</p>
+        <div class="card-episodio">
+            <div class="contenido-episodio">
+                <h5>${ element.name || "Nombre no disponible"}</h5>
+                <p>Episodio: ${element.episode || "No disponible"}</p>
+                <p>Fecha de emisión: ${element.air_date || "No disponible"}</p>
+            </div>
+            <div class="fav-episodio">
+                <button class="boton-favorito boton-personaje" id="fav-${element.id}"><i class="fa-solid fa-star fa-lg"></i></button>
+            </div>
         </div>
-        <div class="fav-episodio">
-            <button class="boton-eliminar boton-episodio" id="del-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></button>
-        </div>
-    </div>
-`
-return singleE
+    `
+    return singleE
 }
 
 const cardsLocaciones = data => {
@@ -192,108 +192,38 @@ const cardsLocaciones = data => {
 
 const singleLCard = element => {
     const singleL = `
-    <div class="card-locacion">
-        <div class="contenido-locacion">
-            <h5>${ element.name || "Nombre no disponible"}</h5>
-            <p>Tipo: ${element.type || "No disponible"}<p>
-            <p>Dimensión: ${element.dimension || "No disponible"}</p>
+        <div class="card-locacion">
+            <div class="contenido-locacion">
+                <h5>${ element.name || "Nombre no disponible"}</h5>
+                <p>Tipo: ${element.type || "No disponible"}<p>
+                <p>Dimensión: ${element.dimension || "No disponible"}</p>
+            </div>
+            <div class="fav-locacion">
+                <button class="boton-favorito boton-personaje" id="fav-${element.id}"><i class="fa-solid fa-star fa-lg"></i></button>
+            </div>
         </div>
-        <div class="fav-locacion">
-            <button class="boton-eliminar boton-locacion" id="del-${element.id}"><i class="fa-solid fa-trash fa-lg"></i></i></button>
-        </div>
-    </div>
-`
-return singleL
-}
-
-const cardsAHtml = (data, funcion, contenedor) => {
-    contenedor.innerHTML = funcion(data)
-}
-
-const agregarAFav = (clase, fav) => {
-    const cards = document.querySelectorAll(clase)
-    for  ( let i = 0; i < cards.length; i++ ){
-        cards[i].onclick = (e) => {
-            const id = e.currentTarget.id.slice(4)
-            const memoria = JSON.parse(localStorage.getItem(fav))
-            if (!memoria){
-                localStorage.setItem(fav,JSON.stringify([id]))
-                Toastify({
-                    text: "Añadido a favoritos",
-                    duration: 3000,
-                    destination: "favoritos.html",
-                    newWindow: false,
-                    close: true,
-                    gravity: "bottom", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
-                      background: "linear-gradient(to right, #00b09b, #96c93d)",
-                    },
-                    onClick: function(){} // Callback after click
-                  }).showToast();
-            }
-            else{
-                const indiceItem = memoria.findIndex( elemento => elemento === id)
-                const nuevaMemoria = memoria
-                if (indiceItem === -1){
-                    nuevaMemoria.push(id)
-                    localStorage.setItem(fav,JSON.stringify(nuevaMemoria))
-                    Toastify({
-                        text: "Añadido a favoritos",
-                        duration: 3000,
-                        destination: "favoritos.html",
-                        newWindow: false,
-                        close: true,
-                        gravity: "bottom", // `top` or `bottom`
-                        position: "right", // `left`, `center` or `right`
-                        stopOnFocus: true, // Prevents dismissing of toast on hover
-                        style: {
-                          background: "linear-gradient(to right, #00b09b, #96c93d)",
-                        },
-                        onClick: function(){} // Callback after click
-                      }).showToast();
-                }
-                else{
-                    Toastify({
-                        text: "Ya se encuentra en favoritos",
-                        duration: 3000,
-                        destination: "favoritos.html",
-                        newWindow: false,
-                        close: true,
-                        gravity: "bottom", // `top` or `bottom`
-                        position: "right", // `left`, `center` or `right`
-                        stopOnFocus: true, // Prevents dismissing of toast on hover
-                        style: {
-                          background: "linear-gradient(90deg, rgba(255,76,76,1) 41%, rgba(255,187,91,1) 100%)",
-                        },
-                      }).showToast();
-                }
-            }
-        }
-    }
-}
+    `
+    return singleL
+} */
 
 fetch (`https://rickandmortyapi.com/api/character`)
 .then ( res => res.json() )
 .then ( data => {
-    cardsAHtml(data.results.slice(0,10), cardsPersonajes, personajes)
+    cardsAHtml(data.results.slice(0,10), cardsPersonajes, personajes,"boton-favorito")
     agregarAFav(".boton-personaje","personajes-fav")
 })
 
 fetch (`https://rickandmortyapi.com/api/episode`)
 .then ( res => res.json() )
 .then ( data => {
-    cardsAHtml(data.results.slice(0,6), cardsEpisodios, episodios)
+    cardsAHtml(data.results.slice(0,6), cardsEpisodios, episodios,"boton-favorito")
     agregarAFav(".boton-episodio","episodios-fav")
 })
 
 fetch (`https://rickandmortyapi.com/api/location`)
 .then ( res => res.json() )
 .then ( data => {
-    cardsAHtml(data.results.slice(0,6), cardsLocaciones, locaciones)
+    cardsAHtml(data.results.slice(0,6), cardsLocaciones, locaciones,"boton-favorito")
     agregarAFav(".boton-locacion","locaciones-fav")
 })
-
-
 
